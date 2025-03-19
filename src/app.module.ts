@@ -14,13 +14,12 @@ import { ConfigJs } from './config.type';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env'],
-      async validate(config) {
+      validate(config) {
         const configPath = join(process.cwd(), '/config.js');
         // require(configPath)
         if (existsSync(configPath))
           try {
-            const doc = (await import(configPath)) as ConfigJs;
-            console.log('config', doc);
+            const doc = require(configPath) as ConfigJs;
 
             config = {
               ...doc,
