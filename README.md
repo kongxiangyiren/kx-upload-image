@@ -2,7 +2,9 @@
 
 # 1、部署到vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kongxiangyiren/kx-upload-image&env=AUTH_TOKEN&env=UPLOAD_TYPE&env=R2_UPLOADURL&env=R2_ACCOUNT_NAME&env=R2_ACCESSKEYID&env=R2_SECRETACCESSKEY&env=R2_DOMAINNAME)
+`UPLOAD_TYPE` 为 `vercel` 时, R2相关参数可忽略
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kongxiangyiren/kx-upload-image&env=AUTH_TOKEN,UPLOAD_TYPE,R2_UPLOADURL,R2_ACCOUNT_NAME,R2_ACCESSKEYID,R2_SECRETACCESSKEY,R2_DOMAINNAME&envDescription=AUTH_TOKEN就是twikoo的IMAGE_CDN_TOKEN,UPLOAD_TYPE为vercel或cloudflareR2,R2_UPLOADURL为S3客户端使用管辖权地特定的终结点,R2_ACCOUNT_NAME储存桶名,R2_ACCESSKEYID访问密钥ID,R2_SECRETACCESSKEY机密访问密钥,R2_DOMAINNAME图床使用的域名&envLink=https://github.com/kongxiangyiren/kx-upload-image/blob/main/README.md)
 
 ## 2、生成 AUTH_TOKEN
 
@@ -44,7 +46,7 @@ AUTH_TOKEN=
 UPLOAD_TYPE="cloudflareR2"
 
 # vercel blob 读写token (可选)
-BLOB_READ_WRITE_TOKEN=
+# BLOB_READ_WRITE_TOKEN=
 
 # cloudflare R2 配置 (可选)
 R2_UPLOADURL=
