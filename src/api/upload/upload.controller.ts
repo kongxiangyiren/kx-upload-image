@@ -8,7 +8,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Request } from 'express';
-import { ConfigJs } from 'src/config.type';
+import { UploadList } from 'src/config.type';
 
 @Controller('upload')
 export class UploadController {
@@ -54,16 +54,29 @@ export class UploadController {
       };
     }
 
-    if (!this.config.get('upload')) {
+    if (!this.config.get<string>('UPLOAD_TYPE')) {
       return {
         status: false,
-        message: '没有配置upload',
+        message: '请检查UPLOAD_TYPE配置',
       };
     }
 
-    const newFile = await (this.config.get('upload') as ConfigJs['upload'])(
-      file,
-    );
+    if (
+      typeof this.config.get(
+        this.config.get<string>('UPLOAD_TYPE') as string,
+      ) !== 'function'
+    ) {
+      return {
+        status: false,
+        message: '请检查UPLOAD_TYPE配置',
+      };
+    }
+
+    const newFile = await (
+      this.config.get(
+        this.config.get<string>('UPLOAD_TYPE') as string,
+      ) as UploadList[string]
+    )(file);
 
     return newFile;
   }

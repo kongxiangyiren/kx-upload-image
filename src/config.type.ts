@@ -1,7 +1,3 @@
-export interface ConfigJs {
-  upload(file: Express.Multer.File): Promise<UploadReturn>;
-}
-
 export interface UploadReturn {
   status: boolean;
   message: string;
@@ -10,4 +6,8 @@ export interface UploadReturn {
       url: string;
     };
   };
+}
+
+export interface UploadList {
+  [key: string]: (file: Express.Multer.File) => Promise<UploadReturn>;
 }

@@ -7,7 +7,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { existsSync } from 'fs';
-import { ConfigJs } from './config.type';
+import { UploadList } from './config.type';
 @Module({
   imports: [
     ApiModule,
@@ -19,7 +19,7 @@ import { ConfigJs } from './config.type';
         // require(configPath)
         if (existsSync(configPath))
           try {
-            const doc = require(configPath) as ConfigJs;
+            const doc = require(configPath) as UploadList;
 
             config = {
               ...doc,
