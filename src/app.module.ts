@@ -22,9 +22,8 @@ import { UploadList } from './config.type';
             const doc = require(configPath) as UploadList;
 
             for (const key in doc) {
-              if (!process.env[key]) {
-                // @ts-expect-error
-                process.env[key] = doc[key];
+              if (!config[key]) {
+                config[key] = doc[key];
               }
             }
           } catch (e) {
