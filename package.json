@@ -11,6 +11,8 @@
     "dist"
   ],
   "scripts": {
+    "dev:netlify": "ncc build ./src/netlify.ts -o dist && netlify dev",
+    "build:netlify": "ncc build ./src/netlify.ts -o dist",
     "postinstall": "npm run build",
     "prepack": "npm run build",
     "vercel-build": "npm run build",
@@ -32,7 +34,6 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
-    "@netlify/functions": "^3.0.4",
     "@vercel/blob": "^0.27.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
@@ -52,6 +53,7 @@
     "@types/multer": "^1.4.12",
     "@types/node": "^22.10.7",
     "@types/supertest": "^6.0.2",
+    "@vercel/ncc": "^0.38.3",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
