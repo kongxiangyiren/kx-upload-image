@@ -11,9 +11,8 @@
     "dist"
   ],
   "scripts": {
-    "dev:netlify": "ncc build ./src/netlify.ts -o dist && netlify dev",
-    "build:netlify": "ncc build ./src/netlify.ts -o dist",
-    "postinstall": "npm run build",
+    "dev:netlify": "rimraf dist && ncc build ./src/netlify.ts -o dist && netlify dev",
+    "build:netlify": "rimraf dist && ncc build ./src/netlify.ts -o dist",
     "prepack": "npm run build",
     "vercel-build": "npm run build",
     "build": "nest build",
@@ -60,6 +59,7 @@
     "globals": "^16.0.0",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
