@@ -8,12 +8,18 @@ import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { existsSync } from 'fs';
 import { UploadList } from './config.type';
+import * as defConfig from '../config';
 @Module({
   imports: [
     ApiModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env'],
+      load: [
+        () => {
+          return defConfig;
+        },
+      ],
       validate(config) {
         const configPath = join(process.cwd(), '/config.js');
         // require(configPath)

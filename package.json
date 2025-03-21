@@ -8,7 +8,8 @@
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "./config.js"
   ],
   "scripts": {
     "dev:netlify": "rimraf dist && ncc build ./src/netlify.ts -o dist && netlify dev",
