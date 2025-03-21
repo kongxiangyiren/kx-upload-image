@@ -68,7 +68,7 @@ export class UploadController {
     ) {
       return {
         status: false,
-        message: '请检查UPLOAD_TYPE配置',
+        message: 'UPLOAD_TYPE 上传配置不存在',
       };
     }
 

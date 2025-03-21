@@ -5,6 +5,8 @@ import * as express from 'express';
 import * as serverless from 'serverless-http';
 import { Express } from 'express-serve-static-core';
 
+import * as doc from '../config.js';
+
 const server = express();
 let cacheNest = false;
 
@@ -21,6 +23,11 @@ const createNestServer = async (expressInstance: Express) => {
 const appServer = serverless(server);
 
 exports.handler = async (event: any, context: any) => {
+  for (const key in doc) {
+    if (!process.env[key]) {
+      process.env[key] = doc[key];
+    }
+  }
   if (!cacheNest) {
     await createNestServer(server)
       .then(() => console.log('Nest Ready'))

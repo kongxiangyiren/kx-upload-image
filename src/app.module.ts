@@ -21,10 +21,12 @@ import { UploadList } from './config.type';
           try {
             const doc = require(configPath) as UploadList;
 
-            config = {
-              ...doc,
-              ...config,
-            };
+            for (const key in doc) {
+              if (!process.env[key]) {
+                // @ts-expect-error
+                process.env[key] = doc[key];
+              }
+            }
           } catch (e) {
             console.log('config.js 配置文件错误', e);
           }
